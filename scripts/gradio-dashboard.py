@@ -49,7 +49,7 @@ def retrive_semantic_recommendations(
         'Suspenseful': 'fear',
         'Sad': 'sadness'
     }
-    
+
     if tone != 'All':
         book_recs.sort_values(by=tone_map[tone], ascending=False, inplace=True)
 
@@ -79,7 +79,7 @@ def recommend_book(query: str, category: str, tone: str):
     
     return results
 
-categories = ['All'] + books['sample_categories'].unique().tolist()
+categories = ['All'] + books['simple_categories'].unique().tolist()
 tones = ['All', 'Happy', 'Surprising', 'Angry', 'Suspenseful', 'Sad']
 
 with gr.Blocks(theme=gr.themes.Glass()) as dashboard:
@@ -101,5 +101,5 @@ with gr.Blocks(theme=gr.themes.Glass()) as dashboard:
     )
 
 if __name__ == '__main__':
-    dashboard.launch(share=True)
+    dashboard.launch()
 
